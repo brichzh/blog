@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Brick的日常</title>
   
-  
+  <subtitle>圆圆圈圈</subtitle>
   <link href="/brickzh/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
