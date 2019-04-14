@@ -81,13 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="——简化Wear版Wx开发过程中的一些总结1. 微光模式 智能手表的电池容量都比较低，导致续航也比较短。为了延长手表的续航，Wear OS 手表在没有操作一段时间后，会进入微光模式 AmbientMode。微光模式就是一个省电模式，这个模式会在低功耗下运行，默认情况下，手表会离开当前的应用，返回到表盘的界面。但有时候，我们希望开发的应用在某些情况下，可以一直保持可见的状态，这就需要我们使用支持微光">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Brick的日常">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/04/14/Android-Wear-Wear-OS-开发/index.html">
 <meta property="og:site_name" content="Brick的日常">
+<meta property="og:description" content="——简化Wear版Wx开发过程中的一些总结1. 微光模式 智能手表的电池容量都比较低，导致续航也比较短。为了延长手表的续航，Wear OS 手表在没有操作一段时间后，会进入微光模式 AmbientMode。微光模式就是一个省电模式，这个模式会在低功耗下运行，默认情况下，手表会离开当前的应用，返回到表盘的界面。但有时候，我们希望开发的应用在某些情况下，可以一直保持可见的状态，这就需要我们使用支持微光">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-14T04:04:33.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Brick的日常">
+<meta name="twitter:description" content="——简化Wear版Wx开发过程中的一些总结1. 微光模式 智能手表的电池容量都比较低，导致续航也比较短。为了延长手表的续航，Wear OS 手表在没有操作一段时间后，会进入微光模式 AmbientMode。微光模式就是一个省电模式，这个模式会在低功耗下运行，默认情况下，手表会离开当前的应用，返回到表盘的界面。但有时候，我们希望开发的应用在某些情况下，可以一直保持可见的状态，这就需要我们使用支持微光">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/14/Android-Wear-Wear-OS-开发/">
 
 
 
 
 
-  <title>Brick的日常</title>
+  <title> | Brick的日常</title>
   
 
 
@@ -152,8 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,9 +229,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -258,9 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/brickzh/2019/04/14/Android-Wear-Wear-OS-开发/" itemprop="url">Untitled</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -302,6 +303,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
           
 
@@ -320,9 +326,7 @@
       
 
       
-        
-          
-            <h4 id="——简化Wear版Wx开发过程中的一些总结"><a href="#——简化Wear版Wx开发过程中的一些总结" class="headerlink" title="——简化Wear版Wx开发过程中的一些总结"></a><em>——简化Wear版Wx开发过程中的一些总结</em></h4><h3 id="1-微光模式"><a href="#1-微光模式" class="headerlink" title="1. 微光模式"></a>1. 微光模式</h3><blockquote>
+        <h4 id="——简化Wear版Wx开发过程中的一些总结"><a href="#——简化Wear版Wx开发过程中的一些总结" class="headerlink" title="——简化Wear版Wx开发过程中的一些总结"></a><em>——简化Wear版Wx开发过程中的一些总结</em></h4><h3 id="1-微光模式"><a href="#1-微光模式" class="headerlink" title="1. 微光模式"></a>1. 微光模式</h3><blockquote>
 <p>智能手表的电池容量都比较低，导致续航也比较短。为了延长手表的续航，Wear OS 手表在没有操作一段时间后，会进入微光模式 AmbientMode。微光模式就是一个省电模式，这个模式会在低功耗下运行，默认情况下，手表会离开当前的应用，返回到表盘的界面。但有时候，我们希望开发的应用在某些情况下，可以一直保持可见的状态，这就需要我们使用支持微光模式的 Activity 了。</p>
 </blockquote>
 <ul>
@@ -368,8 +372,6 @@
 <h3 id="4-性能问题"><a href="#4-性能问题" class="headerlink" title="4.性能问题"></a>4.性能问题</h3><p>应用里有用RecycleView来显示列表，列表里有图片，我们使用Glide来显示的，这里需要注意的一点是，在使用Glide的时候，应该在别处对其进行一下初始化，不要在onBindViewHolder里就直接使用，这会导致第一次打开页面很慢。同样道理，onBindViewHolder里用到东西，最好都事先加载好。图片可以根据实际需求进行剪裁，避免使用原图。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RequestOptions options = <span class="keyword">new</span> RequestOptions();</span><br><span class="line">        options.centerCrop();</span><br><span class="line">        options.override(width, height);</span><br><span class="line">        Glide.with(mContext).load(conversation.getHeadimagepath()).into(holder.avatar);</span><br></pre></td></tr></table></figure></p>
 <h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p>以上就是这次这个小项目开发过程中的一些点，并没有高大上的东西，自己做个记录，如果能帮助到你那就更好了</p>
 
-          
-        
       
     </div>
     
@@ -386,150 +388,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/brickzh/2019/04/06/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bick Zhang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://wx3.sinaimg.cn/mw1024/b64f2715gy1g1u4ywoauyj21cq0u0u0y.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Brick的日常">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/brickzh/2019/04/06/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-06T16:29:55+08:00">
-                2019-04-06
-              </time>
+              <a href="/brickzh/2019/04/06/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/brickzh/2019/04/06/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/brickzh/2019/04/06/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -539,10 +419,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -550,6 +431,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -570,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -632,6 +529,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#——简化Wear版Wx开发过程中的一些总结"><span class="nav-number">1.</span> <span class="nav-text">——简化Wear版Wx开发过程中的一些总结</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#1-微光模式"><span class="nav-number"></span> <span class="nav-text">1. 微光模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Wear-OS右划退出"><span class="nav-number"></span> <span class="nav-text">2. Wear OS右划退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Fragment"><span class="nav-number"></span> <span class="nav-text">3.Fragment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-性能问题"><span class="nav-number"></span> <span class="nav-text">4.性能问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-总结"><span class="nav-number"></span> <span class="nav-text">5.总结</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -805,6 +718,10 @@
 
 
   
+  <script type="text/javascript" src="/brickzh/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/brickzh/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
