@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2019-04-21T13:51:37.082Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/04/14/Android-Wear-Wear-OS-%E5%BC%80%E5%8F%91/</loc>
     
     <lastmod>2019-04-14T04:37:29.080Z</lastmod>
