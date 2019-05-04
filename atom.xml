@@ -6,7 +6,7 @@
   <link href="/brickzh/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-14T04:37:29.080Z</updated>
+  <updated>2019-05-04T13:27:51.561Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/04/C++%E5%AE%B9%E5%99%A8%E2%80%94%E2%80%94%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E9%99%B7%E9%98%B1/"/>
+    <id>http://yoursite.com/2019/05/04/C++容器——迭代器使用的一个陷阱/</id>
+    <published>2019-05-04T12:57:14.498Z</published>
+    <updated>2019-05-04T13:27:51.561Z</updated>
+    
+    <content type="html"><![CDATA[<p>就是这么一个很小的点，都怪平时使用的时候太过于理所当然了，迭代器的使用还是要小心，此为记。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;就是这么一个很小的点，都怪平时使用的时候太过于理所当然了，迭代器的使用还是要小心，此为记。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Android Wear(Wear OS)开发</title>
