@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="就是这么一个很小的点，都怪平时使用的时候太过于理所当然了，迭代器的使用还是要小心，此为记。">
+<meta name="description" content="在项目开发中遇到一个很诡异的bug：使用迭代器循环删除一个std::set容器里的几个元素，但最后发现容器里的对应元素并没有被删除干净，为了说明这个场景，我们来看一个代码片段，这是我为了重现该问题，弄了的一段测试代码。   1234567891011121314151617181920int numList[6]=&amp;#123;1,2,2,3,3,3&amp;#125;;//1.set addset&amp;lt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="不荒不慌">
 <meta property="og:url" content="http://yoursite.com/2019/05/04/C++容器——迭代器使用的一个陷阱/index.html">
 <meta property="og:site_name" content="不荒不慌">
-<meta property="og:description" content="就是这么一个很小的点，都怪平时使用的时候太过于理所当然了，迭代器的使用还是要小心，此为记。">
+<meta property="og:description" content="在项目开发中遇到一个很诡异的bug：使用迭代器循环删除一个std::set容器里的几个元素，但最后发现容器里的对应元素并没有被删除干净，为了说明这个场景，我们来看一个代码片段，这是我为了重现该问题，弄了的一段测试代码。   1234567891011121314151617181920int numList[6]=&amp;#123;1,2,2,3,3,3&amp;#125;;//1.set addset&amp;lt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-04T13:27:51.561Z">
+<meta property="og:updated_time" content="2019-05-04T13:29:05.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="不荒不慌">
-<meta name="twitter:description" content="就是这么一个很小的点，都怪平时使用的时候太过于理所当然了，迭代器的使用还是要小心，此为记。">
+<meta name="twitter:description" content="在项目开发中遇到一个很诡异的bug：使用迭代器循环删除一个std::set容器里的几个元素，但最后发现容器里的对应元素并没有被删除干净，为了说明这个场景，我们来看一个代码片段，这是我为了重现该问题，弄了的一段测试代码。   1234567891011121314151617181920int numList[6]=&amp;#123;1,2,2,3,3,3&amp;#125;;//1.set addset&amp;lt">
 
 
 
@@ -336,7 +336,35 @@
       
 
       
-        <p>就是这么一个很小的点，都怪平时使用的时候太过于理所当然了，迭代器的使用还是要小心，此为记。</p>
+        <ul>
+<li><p>在项目开发中遇到一个很诡异的bug：使用迭代器循环删除一个std::set容器里的几个元素，但最后发现容器里的对应元素并没有被删除干净，为了说明这个场景，我们来看一个代码片段，这是我为了重现该问题，弄了的一段测试代码。</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> numList[<span class="number">6</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="comment">//1.set add</span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; numSet;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//2.1insert into set</span></span><br><span class="line">    numSet.insert(numList[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.travese set</span></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator it=numSet.begin() ;it!=numSet.end();it++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;*it&lt;&lt;<span class="string">" occurs "</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"before delete numSet.size()= "</span>&lt;&lt;numSet.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator it = numSet.begin(); it != numSet.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"delete "</span> &lt;&lt;*it &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    numSet.erase(it);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"after delete numSet.size()= "</span>&lt;&lt;numSet.size()&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p>  这段测试代码的功能很简单，构造一个set容器，把几个数字塞进去，然后通过它的迭代器循环清除里面的元素，大家可以想一下for循环前后的这两句log输出的是什么。</p>
+</li>
+</ul>
+<ul>
+<li><p>这是输出的结果</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">before <span class="keyword">delete</span> numSet.size()= <span class="number">3</span></span><br><span class="line"><span class="keyword">delete</span> <span class="number">1</span></span><br><span class="line">after <span class="keyword">delete</span> numSet.size()= <span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>是不是和你们很多人预想的不太一样，for循环只循环了一次就跳出去了，那说明第一次循环结束再回到for循环条件判断时it!=umSet.end()不成立了，it指向了容器的end，验证一下。</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator it=numSet.begin();(<span class="built_in">cout</span>&lt;&lt; (it == numSet.end() ? <span class="string">"end"</span>:<span class="string">"not end"</span>)&lt;&lt;<span class="built_in">endl</span>, it!=numSet.end());it++) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"delete "</span> &lt;&lt;*it &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    numSet.erase(it);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; (it == numSet.end() ? <span class="string">"end"</span>:<span class="string">"not end"</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  输出结果：</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">before <span class="keyword">delete</span> numSet.size()=<span class="number">3</span></span><br><span class="line"><span class="keyword">not</span> end</span><br><span class="line"><span class="number">1</span> <span class="keyword">delete</span></span><br><span class="line"><span class="keyword">not</span> end</span><br><span class="line">end</span><br><span class="line">after <span class="keyword">delete</span> numSet.size()=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>  确实是这样，在网上查阅了一下使用迭代器删除元素的方法，有两条注意事项：</p>
+<blockquote>
+<p>1.对于关联容器（如map，set，multimap，multiset），删除当前的iterator，仅仅会使当前的iterator失效，只要在erase时，递增当前的iterator即可。这是因为map之类的容器，使用了红黑树来实现，插入，删除一个结点不会对其他结点造成影响。</p>
+</blockquote>
+</li>
+<li><p>这样对于关联容器，正确的使用迭代器的方法是这样：</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator it=numSet.begin(); it!=numSet.end());) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"delete "</span> &lt;&lt;*it &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    numSet.erase(it++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.对于序列式容器（如vector，deque，list等），删除当前的iterator会使后面所有元素的iterator都失效。这是因为vector，deque使用了连续分配的内存，删除一个元素导致后面所有的元素会向前移动一个位置。不过erase方法可以返回下一个有效的iterator。</p>
+</blockquote>
+</li>
+<li>而对于序列容器，正确的方法应该是这样：  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator it=numSet.begin(); it!=numSet.end());) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"delete "</span> &lt;&lt;*it &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    it = numSet.erase(it);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>就是这么一个很小的点，都怪平时使用的时候太过于理所当然了，迭代器的使用还是要小心，此为记。</p>
 
       
     </div>
